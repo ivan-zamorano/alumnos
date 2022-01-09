@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado alumnos</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul class="botonera">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#carga">Cargar alumnos</a></li>
+                <li><a href="#busqueda">Buscar alumnos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id='home'>
+        <div class="container">
+            <h1>Alumnos: información y calificaciones</h1>
+            <p class="txt-wrp">A traves de este portal podrá agregar, leer y modificar las calificaciones de sus alumnos,
+                así como su información personal en caso de ser necesario.
+            </p>
+            <div class="stats">
+                <ul>
+                    <li>
+                        <h4 id="alumnosTotal">Total de alumnos: </h4>
+                    </li>
+                    <li>
+                        <h4>Promedio total:</h4>
+                    </li>
+                    <li>
+                        <h4>Mejor promedio:</h4>
+                    </li>
+                    <li>
+                        <h4>Porcentaje de aprobación:</h4>
+                    </li>
+                </ul>
+                <button id="clear-btn">Clear</button>
+                <!-- <button id="set-btn">SET</button> -->
+            </div>
+        </div>
+    </section>
+
+    <section id="carga">
+        <div class="container carga">
+            <h1>Carga de datos: nuevo alumno</h1>
+            <form class="form-carga" action="">
+                <div class="inputs">
+                    <div class="col-1">
+                        <label for="nombrex">Nombre/s:</label>
+                        <input type="text" id="nombre" name="nombrex">
+                        <label for="apellidox">Apellidos:</label>
+                        <input type="text" id="apellido" name="apellidox">
+                        <label for="dnix">Número de documento:</label>
+                        <input type="text" id="dni" name="dnix">
+                    </div>
+                    <div class="col-2">
+                       <label for="edadx">Edad:</label>
+                        <input type="text" id="edad" name="edadx">
+                        <label for="mailx">Mail:</label>
+                        <input type="text" name="mailx" id="mail">
+                        <label for="telx">Teléfono:</label>
+                        <input type="text" id="tel" name="telx"> 
+                    </div>
+                </div>
+                
+                <h4>Calificaciones</h4>
+                <div class="calificaciones">
+                    <div class="calificacion">
+                        <p>1° trimestre: </p>
+                        <input type="text">
+                    </div>
+                    <div class="calificacion">
+                        <p>2° trimestre: </p>
+                        <input type="text">
+                    </div>
+                    <div class="calificacion">
+                        <p>3° trimestre: </p>
+                        <input type="text">
+                    </div>
+                </div>
+                <button id="btn">Cargar</button>
+
+            </form>
+        </div>
+    </section>
+
+    <section id="busqueda">
+        <div class="container busqueda">
+            <div class="pagination">
+                <button id="back-btn">Anterior</button>
+                <p class="page" id="page-index">1</p>
+                <button id="fwd-btn">Siguiente</button>
+            </div>
+            <table id="tabla">
+                <tr class="head-row">
+                    <th><input type="checkbox" id="check-all"></th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>Edad</th>
+                    <th>Teléfono</th>
+                    <th>Mail</th>
+                    <th>1° Trim.</th>
+                    <th>2° Trim.</th>
+                    <th>3° Trim.</th>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-row">
+                    <td><input type="checkbox" class="cbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </table>
+
+            <div class="edit-btns">
+                <button id="del-btn" disabled='true'>Eliminar</button>
+                <button id="updt-btn" disabled='true'>Actualizar</button>
+                <button id="save-btn" disabled='true'>Guardar</button>
+            </div>
+        </div>
+
+        <div class="del-modal" id="del-box">
+            <div class="modal-content">
+                <p>
+                    <span>¿Desea eliminar los elementos seleccionados?</span>
+                    <br>
+                    <span>Esta acción no puede deshacerse.</span>
+                </p>
+                <button id="del-accept">Si, eliminar</button>
+                <button id="del-cancel">Mejor no</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- <script src="js/write.js"></script> -->
+    <script src="js/readArray.js"></script>
+    <script src="js/writeArray.js"></script>
+
+</body>
+</html>

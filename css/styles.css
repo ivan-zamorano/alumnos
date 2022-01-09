@@ -1,0 +1,252 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  width: 80%;
+}
+
+header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+nav {
+  height: 90px;
+  background-color: rgb(73, 184, 73);
+}
+
+.botonera {
+  float: right;
+  margin-right: 40px;
+  margin-top: 35px;
+}
+
+.botonera li {
+  display: inline-block;
+}
+
+.botonera li a {
+  text-decoration: none;
+  color: #222;
+  font-family: monospace;
+  font-size: 20px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #222;
+  border-radius: 8px;
+  background-color: rgb(149, 229, 203);
+}
+
+.botonera li a:hover {
+  background-color: rgb(121, 199, 199);
+  color: #fff;
+}
+
+#home,
+#carga,
+#busqueda {
+  scroll-margin-top: 90px;
+}
+
+#home {
+  background-color: rgb(226, 193, 121);
+  height: calc(100vh - 90px);
+}
+
+#home p,
+h1,
+div {
+  margin: 0 auto;
+}
+
+#home h1 {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.txt-wrp {
+  width: 60%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+#home p {
+  font-size: 18px;
+}
+
+.stats {
+  width: 60%;
+  padding-top: 30px;
+}
+
+.stats ul li {
+  display: block;
+  font-size: 22px;
+  padding: 10px 0;
+}
+
+#carga {
+  background-color: rgb(226, 193, 121);
+}
+
+#busqueda {
+  height: 100vh;
+}
+
+.carga,
+.busqueda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 90px);
+}
+
+.carga h1 {
+  padding-bottom: 40px;
+}
+
+.form-carga {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.col-1,
+.col-2 {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.form-carga h4 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.form-carga input {
+  margin-bottom: 10px;
+}
+
+#btn,
+#set-btn {
+  width: 30%;
+  margin: 0 auto;
+  padding: 5px 0;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.calificaciones {
+  display: flex;
+  flex-direction: column;
+}
+
+.calificacion {
+  display: inline-flex;
+  padding-top: 10px;
+}
+
+.calificacion input {
+  width: 10%;
+}
+
+#clear-btn {
+  padding: 5px 15px;
+}
+
+#busqueda {
+  background-color: rgb(149, 229, 203);
+}
+
+.pagination button,
+.pagination p {
+  display: inline-block;
+  margin: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+td,
+th {
+  border: 1px solid #333;
+  height: 30px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.table-row td:nth-child(1) {
+  text-align: center;
+}
+
+.table-row td:nth-child(5) {
+  width: 50px;
+}
+.table-row td:nth-child(8),
+.table-row td:nth-child(9),
+.table-row td:nth-child(10) {
+  width: 15px;
+}
+
+.table-row td:nth-child(4),
+.table-row td:nth-child(6) {
+  width: 120px;
+}
+
+.table-row td:nth-child(7) {
+  width: 200px;
+}
+
+.edit-btns {
+  padding: 50px 0px;
+}
+
+.edit-btns button {
+  padding: 8px 10px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.edit-btns :nth-child(2) {
+  margin: 0 40px;
+}
+
+.del-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
