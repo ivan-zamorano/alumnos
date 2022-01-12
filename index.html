@@ -26,6 +26,14 @@
             <p class="txt-wrp">A traves de este portal podrá agregar, leer y modificar las calificaciones de sus alumnos,
                 así como su información personal en caso de ser necesario.
             </p>
+            <p class="warning">
+                <span>IMPORTANTE: </span>
+                <span>esta aplicación tiene un fin meramente demostrativo.
+                Los datos ingresados se guardarán en el almacenamiento local de su navegador, y los mismos
+                podrían eliminarse de forma permanente si se ejecutan acciones como eliminar el historial
+                de navegación, eliminar las cookies o borrar la cache del navegador.</span>
+                 
+            </p>
             <div class="stats">
                 <ul>
                     <li>
@@ -41,7 +49,7 @@
                         <h4>Porcentaje de aprobación:</h4>
                     </li>
                 </ul>
-                <button id="clear-btn">Clear</button>
+                <!-- <button id="clear-btn">Clear</button> -->
                 <!-- <button id="set-btn">SET</button> -->
             </div>
         </div>
@@ -64,7 +72,7 @@
                        <label for="edadx">Edad:</label>
                         <input type="text" id="edad" name="edadx">
                         <label for="mailx">Mail:</label>
-                        <input type="text" name="mailx" id="mail">
+                        <input type="email" id="mail" name="mailx">
                         <label for="telx">Teléfono:</label>
                         <input type="text" id="tel" name="telx"> 
                     </div>
@@ -74,15 +82,15 @@
                 <div class="calificaciones">
                     <div class="calificacion">
                         <p>1° trimestre: </p>
-                        <input type="text">
+                        <input type="text" id="trim-uno">
                     </div>
                     <div class="calificacion">
                         <p>2° trimestre: </p>
-                        <input type="text">
+                        <input type="text" id="trim-dos">
                     </div>
                     <div class="calificacion">
                         <p>3° trimestre: </p>
-                        <input type="text">
+                        <input type="text" id="trim-tres">
                     </div>
                 </div>
                 <button id="btn">Cargar</button>
@@ -237,12 +245,11 @@
             <div class="edit-btns">
                 <button id="del-btn" disabled='true'>Eliminar</button>
                 <button id="updt-btn" disabled='true'>Actualizar</button>
-                <button id="save-btn" disabled='true'>Guardar</button>
             </div>
         </div>
 
-        <div class="del-modal" id="del-box">
-            <div class="modal-content">
+        <div class="modal" id="del-box">
+            <div class="del-content">
                 <p>
                     <span>¿Desea eliminar los elementos seleccionados?</span>
                     <br>
@@ -250,6 +257,52 @@
                 </p>
                 <button id="del-accept">Si, eliminar</button>
                 <button id="del-cancel">Mejor no</button>
+            </div>
+        </div>
+
+        <div class="modal" id="updt-box">
+            <div class="updt-content">
+                <form class="form-carga" action="">
+                    <div class="inputs">
+                        <div class="col-1">
+                            <label for="nombreupdt">Nombre/s:</label>
+                            <input type="text" id="nombreu" name="nombreupdt">
+                            <label for="apellidoupdt">Apellidos:</label>
+                            <input type="text" id="apellidou" name="apellidoupdt">
+                            <label for="dniupdt">Número de documento:</label>
+                            <input type="text" id="dniu" name="dniupdt">
+                        </div>
+                        <div class="col-2">
+                           <label for="edadupdt">Edad:</label>
+                            <input type="text" id="edadu" name="edadupdt">
+                            <label for="mailupdt">Mail:</label>
+                            <input type="text" name="mailxu" id="mailupdt">
+                            <label for="telupdt">Teléfono:</label>
+                            <input type="text" id="telu" name="telupdt"> 
+                        </div>
+                    </div>
+                    
+                    <h4>Calificaciones</h4>
+                    <div class="calificaciones">
+                        <div class="calificacion">
+                            <p>1° trimestre: </p>
+                            <input type="text">
+                        </div>
+                        <div class="calificacion">
+                            <p>2° trimestre: </p>
+                            <input type="text">
+                        </div>
+                        <div class="calificacion">
+                            <p>3° trimestre: </p>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="updt-btns">
+                        <button id="updt-accept">Guardar</button>
+                        <button id="updt-cancel">Cancelar</button>
+                    </div>
+    
+                </form>
             </div>
         </div>
     </section>
