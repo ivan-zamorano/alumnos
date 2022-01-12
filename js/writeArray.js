@@ -9,8 +9,6 @@ let dni = document.getElementById("dni");
 // let trimTres = document.getElementById("trim-tres");
 
 let boton = document.getElementById("btn");
-// let clear = document.getElementById("clear-btn");
-// let setBtn = document.getElementById("set-btn");
 
 class Alumno {
   constructor(nombre, apellido, dni) {
@@ -26,6 +24,8 @@ class Alumno {
   }
 }
 
+// let clear = document.getElementById("clear-btn");
+// let setBtn = document.getElementById("set-btn");
 // clear.addEventListener("click", function () {
 //   localStorage.alumnos = JSON.stringify(new Array());
 //   location.reload();

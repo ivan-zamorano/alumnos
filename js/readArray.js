@@ -226,6 +226,7 @@ delAccept.addEventListener("click", function () {
     for (i in checkedObj) {
       if (entries[e] === checkedObj[i]) {
         entries.splice(e, 1);
+        delete checkedObj[i];
         localStorage.alumnos = JSON.stringify(entries);
         entries = JSON.parse(localStorage.alumnos);
         entryCount = JSON.parse(localStorage.alumnos).length;
