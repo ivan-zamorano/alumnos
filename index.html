@@ -49,8 +49,8 @@
                         <h4>Porcentaje de aprobación:</h4>
                     </li>
                 </ul>
-                <!-- <button id="clear-btn">Clear</button> -->
-                <!-- <button id="set-btn">SET</button> -->
+                <button id="clear-btn">Clear</button>
+                <button id="set-btn">SET</button>
             </div>
         </div>
     </section>
@@ -93,7 +93,7 @@
                         <input type="text" id="trim-tres">
                     </div>
                 </div>
-                <button id="btn">Cargar</button>
+                <button class="carga-btn" id="btn">Cargar</button>
 
             </form>
         </div>
@@ -255,8 +255,10 @@
                     <br>
                     <span>Esta acción no puede deshacerse.</span>
                 </p>
-                <button id="del-accept">Si, eliminar</button>
-                <button id="del-cancel">Mejor no</button>
+                <div class="del-btns">
+                    <button id="del-accept">Si, eliminar</button>
+                    <button id="del-cancel">Mejor no</button>
+                </div>
             </div>
         </div>
 
@@ -270,7 +272,7 @@
                             <label for="apellidoupdt">Apellidos:</label>
                             <input type="text" id="apellidou" name="apellidoupdt">
                             <label for="dniupdt">Número de documento:</label>
-                            <input type="text" id="dniu" name="dniupdt">
+                            <input type="number" id="dniu" name="dniupdt">
                         </div>
                         <div class="col-2">
                            <label for="edadupdt">Edad:</label>

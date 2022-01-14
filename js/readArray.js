@@ -4,12 +4,6 @@ let pageIndex = document.getElementById("page-index");
 let entryCount = JSON.parse(localStorage.alumnos).length;
 let entries = JSON.parse(localStorage.alumnos);
 
-let statsDisplay = function () {
-  total.innerHTML = total.innerHTML + entryCount;
-};
-
-statsDisplay();
-
 let tabla = document.getElementById("tabla");
 let rows = tabla.getElementsByTagName("tr");
 
@@ -34,6 +28,11 @@ let fwd = document.getElementById("fwd-btn");
 let cbox = document.querySelectorAll(".cbox");
 
 let index = parseInt(pageIndex.innerHTML);
+if (pages.length > 0) {
+  pageIndex.innerHTML = `${index}/${pages.length}`;
+} else {
+  pageIndex.innerHTML = `${index}/1`;
+}
 
 let clearCboxes = function () {
   for (e in cbox) {
@@ -49,28 +48,19 @@ let clearCboxes = function () {
 back.addEventListener("click", function () {
   if (index > 1) {
     index = index - 1;
-    pageIndex.innerHTML = index;
+    pageIndex.innerHTML = `${index}/${pages.length}`;
     display();
     clearCboxes();
   }
   cboxDisable();
+  checkAll.disabled = false;
 });
 
 fwd.addEventListener("click", function () {
   if (index < pages.length) {
-    for (let i = 1; i < rows.length; i++) {
-      rows[i].getElementsByTagName("td")[1].innerHTML = "";
-      rows[i].getElementsByTagName("td")[2].innerHTML = "";
-      rows[i].getElementsByTagName("td")[3].innerHTML = "";
-      rows[i].getElementsByTagName("td")[4].innerHTML = "";
-      rows[i].getElementsByTagName("td")[5].innerHTML = "";
-      rows[i].getElementsByTagName("td")[6].innerHTML = "";
-      rows[i].getElementsByTagName("td")[7].innerHTML = "";
-      rows[i].getElementsByTagName("td")[8].innerHTML = "";
-      rows[i].getElementsByTagName("td")[9].innerHTML = "";
-    }
+    clearTable();
     index = index + 1;
-    pageIndex.innerHTML = index;
+    pageIndex.innerHTML = `${index}/${pages.length}`;
     clearCboxes();
     display();
   }
@@ -89,6 +79,12 @@ let display = function () {
       rows[i].getElementsByTagName("td")[1].innerHTML = content.nombre;
       rows[i].getElementsByTagName("td")[2].innerHTML = content.apellido;
       rows[i].getElementsByTagName("td")[3].innerHTML = content.dni;
+      rows[i].getElementsByTagName("td")[4].innerHTML = content.edad;
+      rows[i].getElementsByTagName("td")[5].innerHTML = content.mail;
+      rows[i].getElementsByTagName("td")[6].innerHTML = content.tel;
+      rows[i].getElementsByTagName("td")[7].innerHTML = content.trimUno;
+      rows[i].getElementsByTagName("td")[8].innerHTML = content.trimDos;
+      rows[i].getElementsByTagName("td")[9].innerHTML = content.trimTres;
     }
   }
 };
@@ -98,12 +94,12 @@ let clearTable = function () {
     rows[i].getElementsByTagName("td")[1].innerHTML = "";
     rows[i].getElementsByTagName("td")[2].innerHTML = "";
     rows[i].getElementsByTagName("td")[3].innerHTML = "";
-    // rows[i].getElementsByTagName("td")[4].innerHTML = "";
-    // rows[i].getElementsByTagName("td")[5].innerHTML = "";
-    // rows[i].getElementsByTagName("td")[6].innerHTML = "";
-    // rows[i].getElementsByTagName("td")[7].innerHTML = "";
-    // rows[i].getElementsByTagName("td")[8].innerHTML = "";
-    // rows[i].getElementsByTagName("td")[9].innerHTML = "";
+    rows[i].getElementsByTagName("td")[4].innerHTML = "";
+    rows[i].getElementsByTagName("td")[5].innerHTML = "";
+    rows[i].getElementsByTagName("td")[6].innerHTML = "";
+    rows[i].getElementsByTagName("td")[7].innerHTML = "";
+    rows[i].getElementsByTagName("td")[8].innerHTML = "";
+    rows[i].getElementsByTagName("td")[9].innerHTML = "";
   }
 };
 
@@ -156,19 +152,22 @@ cbox.forEach((item) => {
 // });
 
 checkAll.addEventListener("click", function () {
-  if (checkAll.checked === true) {
-    checkCount = 0;
-    for (let e = 0; e < 10; e++) {
-      if (pages[index - 1][e] !== undefined) {
-        cbox[e].checked = true;
-        checkCount += 1;
-      }
-    }
-  } else {
-    clearCboxes();
-    checkCount = 0;
-  }
-  btnEnableDisable();
+  // if (checkAll.checked === true) {
+  //   checkCount = 0;
+  //   for (let e = 0; e < 10; e++) {
+  //     if (pages[index - 1][e] !== undefined) {
+  //       cbox[e].checked = true;
+  //       checkCount += 1;
+  //     }
+  //   }
+  // } else {
+  //   clearCboxes();
+  //   checkCount = 0;
+  // }
+  // btnEnableDisable();
+  cbox.forEach((item) => {
+    item.click();
+  });
 });
 
 let cboxDisable = function () {
@@ -234,6 +233,7 @@ delAccept.addEventListener("click", function () {
       }
     }
   }
+  cboxDisable();
   checkCount = 0;
   btnEnableDisable();
   delBox.style.display = "none";
@@ -241,7 +241,7 @@ delAccept.addEventListener("click", function () {
   clearTable();
   pagination();
   display();
-  cboxDisable();
+  statsDisplay();
 });
 
 delCancel.addEventListener("click", function () {
@@ -330,3 +330,17 @@ updtAccept.addEventListener("click", function (e) {
 updtCancel.addEventListener("click", function () {
   updtBox.style.display = "none";
 });
+
+// STATS
+
+// let promedioAlumno = function (t1, t2, t3) {
+//   let promedio = (t1 + t2 + t3) / 3;
+//   return promedio;
+// };
+
+let statsDisplay = function () {
+  total.innerHTML = "Promedio total: ";
+  total.innerHTML = total.innerHTML + entryCount;
+};
+
+statsDisplay();

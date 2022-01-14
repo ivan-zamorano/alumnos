@@ -159,13 +159,13 @@ div {
   margin-bottom: 10px;
 }
 
-#btn,
-#set-btn {
+#btn {
   width: 30%;
   margin: 0 auto;
   padding: 5px 0;
-  font-size: 15px;
+  font-size: 16px;
   margin-top: 20px;
+  border-radius: 5px;
 }
 
 .calificaciones {
@@ -269,6 +269,27 @@ tr:nth-child(even) {
   padding: 20px;
   border: 1px solid #888;
   width: 40%;
+  border-radius: 10px;
+}
+
+.del-content p {
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.del-btns {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0;
+}
+
+.del-btns button {
+  width: 25%;
+  margin: 0 auto;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .updt-content {
@@ -277,9 +298,12 @@ tr:nth-child(even) {
   padding: 30px;
   border: 1px solid #888;
   width: 40%;
+  border-radius: 10px;
 }
 
 .updt-btns button {
   padding: 8px 15px;
   margin: 20px 20px 0 20px;
+  border-radius: 5px;
+  font-size: 16px;
 }
