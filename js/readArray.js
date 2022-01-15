@@ -1,4 +1,8 @@
 let total = document.getElementById("alumnosTotal");
+let promedioTotal = document.getElementById("promedioTotal");
+let mejorPromedio = document.getElementById("mejorPromedio");
+let porcentaje = document.getElementById("porcentaje");
+
 let pageIndex = document.getElementById("page-index");
 
 let entryCount = JSON.parse(localStorage.alumnos).length;
@@ -20,7 +24,9 @@ let pagination = function () {
 
 pagination();
 
-// Botones para navegación de la tabla
+////// TABLA //////
+
+// Navegación de páginas
 
 let back = document.getElementById("back-btn");
 let fwd = document.getElementById("fwd-btn");
@@ -67,6 +73,19 @@ fwd.addEventListener("click", function () {
   cboxDisable();
 });
 
+// Capitalizar nombres
+let capitalize = function (string) {
+  var splitStr = string.toLowerCase().split(" ");
+  for (var i = 0; i < splitStr.length; i++) {
+    // You do not need to check if i is larger than splitStr length, as your for does that for you
+    // Assign it back to the array
+    splitStr[i] =
+      splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  // Directly return the joined string
+  return splitStr.join(" ");
+};
+
 // Imprimir datos en tabla
 
 let display = function () {
@@ -76,19 +95,25 @@ let display = function () {
         break;
       }
       let content = JSON.parse(pages[index - 1][i - 1]);
-      rows[i].getElementsByTagName("td")[1].innerHTML = content.nombre;
-      rows[i].getElementsByTagName("td")[2].innerHTML = content.apellido;
+      rows[i].getElementsByTagName("td")[1].innerHTML = capitalize(
+        content.nombre
+      );
+      rows[i].getElementsByTagName("td")[2].innerHTML = capitalize(
+        content.apellido
+      );
       rows[i].getElementsByTagName("td")[3].innerHTML = content.dni;
       rows[i].getElementsByTagName("td")[4].innerHTML = content.edad;
-      rows[i].getElementsByTagName("td")[5].innerHTML = content.mail;
-      rows[i].getElementsByTagName("td")[6].innerHTML = content.tel;
+      rows[i].getElementsByTagName("td")[5].innerHTML = content.tel;
+      rows[i].getElementsByTagName("td")[6].innerHTML = content.mail;
       rows[i].getElementsByTagName("td")[7].innerHTML = content.trimUno;
       rows[i].getElementsByTagName("td")[8].innerHTML = content.trimDos;
       rows[i].getElementsByTagName("td")[9].innerHTML = content.trimTres;
     }
   }
 };
+display();
 
+// Limpiar tabla
 let clearTable = function () {
   for (let i = 1; i < rows.length; i++) {
     rows[i].getElementsByTagName("td")[1].innerHTML = "";
@@ -102,8 +127,6 @@ let clearTable = function () {
     rows[i].getElementsByTagName("td")[9].innerHTML = "";
   }
 };
-
-display();
 
 // Seleccionar elementos de la tabla
 
@@ -135,38 +158,13 @@ cbox.forEach((item) => {
   });
 });
 
-// cbox.forEach((item) => {
-//   item.addEventListener("click", function () {
-//     if (item.checked === true) {
-//       checkCount += 1;
-//     }
-//     if (item.checked === false) {
-//       checkCount -= 1;
-//       if (checkAll.checked === true) {
-//         checkAll.checked = false;
-//       }
-//     }
-//     // Habilitar o deshabilitar botones de edición de tabla
-//     btnEnableDisable();
-//   });
-// });
-
 checkAll.addEventListener("click", function () {
-  // if (checkAll.checked === true) {
-  //   checkCount = 0;
-  //   for (let e = 0; e < 10; e++) {
-  //     if (pages[index - 1][e] !== undefined) {
-  //       cbox[e].checked = true;
-  //       checkCount += 1;
-  //     }
-  //   }
-  // } else {
-  //   clearCboxes();
-  //   checkCount = 0;
-  // }
-  // btnEnableDisable();
   cbox.forEach((item) => {
-    item.click();
+    if (checkAll.checked === true && item.checked === false) {
+      item.click();
+    } else if (checkAll.checked === false && item.checked === true) {
+      item.click();
+    }
   });
 });
 
@@ -192,7 +190,7 @@ let cboxDisable = function () {
 
 cboxDisable();
 
-// EDITAR TABLA
+////// EDITAR ENTRADAS //////
 
 let delBtn = document.getElementById("del-btn");
 let delBox = document.getElementById("del-box");
@@ -257,12 +255,35 @@ let updtCancel = document.getElementById("updt-cancel");
 let nombreUpdt = document.getElementById("nombreu");
 let apellidoUpdt = document.getElementById("apellidou");
 let dniUpdt = document.getElementById("dniu");
+let edadUpdt = document.getElementById("edadu");
+let telUpdt = document.getElementById("telu");
+let mailUpdt = document.getElementById("mailu");
+let trimUnoUpdt = document.getElementById("trim-unou");
+let trimDosUpdt = document.getElementById("trim-dosu");
+let trimTresUpdt = document.getElementById("trim-tresu");
 
 class AlumnoUpdt {
-  constructor(nombre, apellido, dni) {
+  constructor(
+    nombre,
+    apellido,
+    dni,
+    edad,
+    mail,
+    tel,
+    trimUno,
+    trimDos,
+    trimTres
+  ) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.dni = dni;
+    this.edad = edad;
+    this.mail = mail;
+    this.tel = tel;
+    this.trimUno = trimUno;
+    this.trimDos = trimDos;
+    this.trimTres = trimTres;
+    this.promedio = 0;
   }
 }
 
@@ -279,6 +300,12 @@ updtBtn.addEventListener("click", function () {
   nombreUpdt.value = selected.nombre;
   apellidoUpdt.value = selected.apellido;
   dniUpdt.value = selected.dni;
+  edadUpdt.value = selected.edad;
+  mailUpdt.value = selected.mail;
+  telUpdt.value = selected.tel;
+  trimUnoUpdt.value = selected.trimUno;
+  trimDosUpdt.value = selected.trimDos;
+  trimTresUpdt.value = selected.trimTres;
 });
 
 updtAccept.addEventListener("click", function (e) {
@@ -287,7 +314,13 @@ updtAccept.addEventListener("click", function (e) {
   let updtInput = new AlumnoUpdt(
     nombreUpdt.value,
     apellidoUpdt.value,
-    dniUpdt.value
+    dniUpdt.value,
+    edadUpdt.value,
+    mailUpdt.value,
+    telUpdt.value,
+    trimUnoUpdt.value,
+    trimDosUpdt.value,
+    trimTresUpdt.value
   );
 
   let cboxIndex = 0;
@@ -298,6 +331,7 @@ updtAccept.addEventListener("click", function (e) {
   }
   let selected = pages[index - 1][cboxIndex];
 
+  // Validación de campos vacios
   let condicion = false;
   for (i in updtInput) {
     if (updtInput[i].length == 0) {
@@ -308,6 +342,121 @@ updtAccept.addEventListener("click", function (e) {
       condicion = true;
     }
   }
+
+  // Validación de campos numéricos
+  let inputCtrl = function (data) {
+    for (e in data) {
+      let ctrl = parseInt(data[e]);
+      if (isNaN(ctrl) === true) {
+        condicion = false;
+        switch (data) {
+          case updtInput.dni:
+            alert(
+              "El DNI ingresado no es correcto. Asegurese de estar ingresando únicamente números."
+            );
+            break;
+          case updtInput.edad:
+            alert(
+              "La edad ingresada no es correcta. Asegurese de estar ingresando únicamente números."
+            );
+            break;
+          case updtInput.tel:
+            alert(
+              "El teléfono ingresado no es correcto. Asegurese de estar ingresando únicamente números."
+            );
+            break;
+          case updtInput.trimUno:
+            alert(
+              "La nota ingresada para el 1° trimestre no es correcta. Asegurese de estar ingresando únicamente números."
+            );
+            break;
+          case updtInput.trimDos:
+            alert(
+              "La nota ingresada para el 2° trimestre no es correcta. Asegurese de estar ingresando únicamente números."
+            );
+            break;
+          case updtInput.trimTres:
+            alert(
+              "La nota ingresada para el 3° trimestre no es correcta. Asegurese de estar ingresando únicamente números."
+            );
+            break;
+        }
+        return;
+      }
+    }
+  };
+
+  // Validación de campos de texto
+  let stringCtrl = function (data) {
+    let letras = /^[A-Za-z]+$/;
+    let spcBar = " ";
+    for (e in data) {
+      if (data[e].match(letras) || data[e].match(spcBar)) {
+        condicion = true;
+      } else {
+        condicion = false;
+        switch (data) {
+          case newInput.nombre:
+            alert(
+              "El nombre ingresado no es correcto. Asegurese de estar ingresando únicamente letras."
+            );
+            break;
+          case newInput.apellido:
+            alert(
+              "El apellido ingresado no es correcto. Asegurese de estar ingresando únicamente letras."
+            );
+            break;
+        }
+        return;
+      }
+    }
+  };
+
+  // Validación de mail
+  let mailCtrl = function (data) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data)) {
+      condicion = true;
+    } else {
+      alert("La direccion de e-mail ingresada no es valida.");
+      condicion = false;
+    }
+  };
+
+  inputCtrl(updtInput.dni);
+  inputCtrl(updtInput.edad);
+  inputCtrl(updtInput.tel);
+  mailCtrl(updtInput.mail);
+  inputCtrl(updtInput.trimUno);
+  inputCtrl(updtInput.trimDos);
+  inputCtrl(updtInput.trimTres);
+  stringCtrl(updtInput.nombre);
+  stringCtrl(updtInput.apellido);
+
+  // Validación de notas
+  let notas = [
+    parseInt(updtInput.trimUno),
+    parseInt(updtInput.trimDos),
+    parseInt(updtInput.trimTres),
+  ];
+
+  let validarNota = function () {
+    for (e in notas) {
+      if (notas[e] < 1 || notas[e] > 10) {
+        alert(
+          `La nota ingresada para el ${
+            parseInt(e) + 1
+          }° trimestre no es correcta.`
+        );
+        condicion = false;
+        break;
+      }
+    }
+  };
+
+  validarNota();
+
+  // Cálculo de promedio
+  updtInput.promedio = (notas[0] + notas[1] + notas[2]) / 3;
 
   if (condicion === true) {
     for (i in entries) {
@@ -331,16 +480,73 @@ updtCancel.addEventListener("click", function () {
   updtBox.style.display = "none";
 });
 
-// STATS
-
-// let promedioAlumno = function (t1, t2, t3) {
-//   let promedio = (t1 + t2 + t3) / 3;
-//   return promedio;
-// };
+////// STATS //////
 
 let statsDisplay = function () {
-  total.innerHTML = "Promedio total: ";
-  total.innerHTML = total.innerHTML + entryCount;
+  let totalAlumnos = function () {
+    total.innerHTML = "Total de alumnos: ";
+    total.innerHTML = total.innerHTML + entryCount;
+  };
+
+  let promedioGral = function () {
+    let promedios = [];
+    for (e in entries) {
+      promedios.push(JSON.parse(entries[e]).promedio);
+    }
+    let promGral = 0;
+    for (e in promedios) {
+      promGral += promedios[e];
+    }
+    promGral = promGral / promedios.length;
+    promedioTotal.innerHTML = "Promedio total: ";
+    if (entryCount < 1) {
+      promedioTotal.innerHTML = "Promedio total: --";
+    } else {
+      promedioTotal.innerHTML = promedioTotal.innerHTML + promGral.toFixed(2);
+    }
+  };
+
+  let mayorPromedio = function () {
+    let promedios = [];
+    for (e in entries) {
+      promedios.push(JSON.parse(entries[e]).promedio);
+    }
+    let mayor = 0;
+    for (e in promedios) {
+      if (promedios[e] > mayor) {
+        mayor = promedios[e];
+      }
+    }
+    mejorPromedio.innerHTML = "Mejor promedio: ";
+    if (entryCount < 1) {
+      mejorPromedio.innerHTML = "Mejor promedio: --";
+    } else if (Number.isInteger(mayor)) {
+      mejorPromedio.innerHTML = mejorPromedio.innerHTML + mayor;
+    } else {
+      mejorPromedio.innerHTML = mejorPromedio.innerHTML + mayor.toFixed(2);
+    }
+  };
+
+  let aprobacion = function () {
+    let aprobados = 0;
+    for (e in entries) {
+      if (JSON.parse(entries[e]).promedio >= 7) {
+        aprobados++;
+      }
+    }
+    let porcAprobados = (aprobados * 100) / entryCount;
+    porcentaje.innerHTML = "Porcentaje de aprobación: ";
+    if (entryCount < 1) {
+      porcentaje.innerHTML = "Porcentaje de aprobación: --";
+    } else {
+      porcentaje.innerHTML = porcentaje.innerHTML + porcAprobados + "%";
+    }
+  };
+
+  totalAlumnos();
+  promedioGral();
+  mayorPromedio();
+  aprobacion();
 };
 
 statsDisplay();
