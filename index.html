@@ -23,8 +23,8 @@
     <section id='home'>
         <div class="container">
             <h1>Alumnos: información y calificaciones</h1>
-            <p class="txt-wrp">A traves de este portal podrá agregar, leer y modificar las calificaciones de sus alumnos,
-                así como su información personal en caso de ser necesario.
+            <p class="txt-wrp">A traves de este portal podrá agregar, leer y modificar la información
+                personal de sus alumnos y sus calificaciones.  
             </p>
             <p class="warning">
                 <span>IMPORTANTE: </span>
@@ -49,7 +49,6 @@
                         <h4 id="porcentaje">Porcentaje de aprobación:</h4>
                     </li>
                 </ul>
-                <!-- <button id="clear-btn">Clear</button> -->
             </div>
         </div>
     </section>
@@ -65,15 +64,15 @@
                         <label for="apellidox">Apellidos:</label>
                         <input type="text" id="apellido" name="apellidox">
                         <label for="dnix">Número de documento:</label>
-                        <input type="text" id="dni" name="dnix">
+                        <input type="number" id="dni" name="dnix">
                     </div>
                     <div class="col-2">
                        <label for="edadx">Edad:</label>
-                        <input type="text" id="edad" name="edadx">
+                        <input type="number" id="edad" name="edadx">
                         <label for="mailx">Mail:</label>
                         <input type="email" id="mail" name="mailx">
                         <label for="telx">Teléfono:</label>
-                        <input type="text" id="tel" name="telx"> 
+                        <input type="number" id="tel" name="telx"> 
                     </div>
                 </div>
                 
@@ -81,15 +80,15 @@
                 <div class="calificaciones">
                     <div class="calificacion">
                         <p>1° trimestre: </p>
-                        <input type="text" id="trim-uno">
+                        <input type="number" id="trim-uno">
                     </div>
                     <div class="calificacion">
                         <p>2° trimestre: </p>
-                        <input type="text" id="trim-dos">
+                        <input type="number" id="trim-dos">
                     </div>
                     <div class="calificacion">
                         <p>3° trimestre: </p>
-                        <input type="text" id="trim-tres">
+                        <input type="number" id="trim-tres">
                     </div>
                 </div>
                 <button class="carga-btn" id="btn">Cargar</button>
@@ -275,11 +274,11 @@
                         </div>
                         <div class="col-2">
                            <label for="edadupdt">Edad:</label>
-                            <input type="text" id="edadu" name="edadupdt">
+                            <input type="number" id="edadu" name="edadupdt">
                             <label for="mailupdt">Mail:</label>
                             <input type="text" id="mailu" name="mailupdt" >
                             <label for="telupdt">Teléfono:</label>
-                            <input type="text" id="telu" name="telupdt"> 
+                            <input type="number" id="telu" name="telupdt"> 
                         </div>
                     </div>
                     
@@ -287,15 +286,15 @@
                     <div class="calificaciones">
                         <div class="calificacion">
                             <p>1° trimestre: </p>
-                            <input type="text" id="trim-unou">
+                            <input type="number" id="trim-unou">
                         </div>
                         <div class="calificacion">
                             <p>2° trimestre: </p>
-                            <input type="text" id="trim-dosu">
+                            <input type="number" id="trim-dosu">
                         </div>
                         <div class="calificacion">
                             <p>3° trimestre: </p>
-                            <input type="text" id="trim-tresu">
+                            <input type="number" id="trim-tresu">
                         </div>
                     </div>
                     <div class="updt-btns">
@@ -308,9 +307,8 @@
         </div>
     </section>
 
-    <!-- <script src="js/write.js"></script> -->
-    <script src="js/readArray.js"></script>
-    <script src="js/writeArray.js"></script>
+    <script src="js/write.js"></script>
+    <script src="js/read.js"></script>
 
 </body>
 </html>
