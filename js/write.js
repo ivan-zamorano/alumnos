@@ -62,10 +62,37 @@ boton.addEventListener("click", function (e) {
 
   let condicion = false;
 
-  // Validación de campos vacios
-  for (e in newInput) {
-    if (newInput[e].length === 0) {
-      alert(`Complete el campo ${e}`);
+  for (i in newInput) {
+    if (newInput[i].length === 0) {
+      switch (i) {
+        case "nombre":
+          alert("Complete el campo nombre");
+          break;
+        case "apellido":
+          alert("Complete el campo apellido");
+          break;
+        case "dni":
+          alert("Complete el campo documento");
+          break;
+        case "edad":
+          alert("Complete el campo edad");
+          break;
+        case "mail":
+          alert("Complete el campo mail");
+          break;
+        case "tel":
+          alert("Complete el campo teléfono");
+          break;
+        case "trimUno":
+          alert("Ingrese una nota para el 1° trimestre");
+          break;
+        case "trimDos":
+          alert("Ingrese una nota para el 2° trimestre");
+          break;
+        case "trimTres":
+          alert("Ingrese una nota para el 3° trimestre");
+          break;
+      }
       condicion = false;
       return;
     } else {
@@ -135,7 +162,7 @@ boton.addEventListener("click", function (e) {
         alert(
           `La nota ingresada para el ${
             parseInt(e) + 1
-          }° trimestre no es correcta.`
+          }° trimestre no es correcta. Ingrese un número del 1 al 10`
         );
         condicion = false;
         break;
