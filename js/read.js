@@ -228,13 +228,14 @@ delAccept.addEventListener("click", function () {
       }
     }
   }
-  cboxDisable();
+
   checkCount = 0;
   btnEnableDisable();
   delBox.style.display = "none";
   clearCboxes();
   clearTable();
   pagination();
+  cboxDisable();
   display();
   statsDisplay();
 });
